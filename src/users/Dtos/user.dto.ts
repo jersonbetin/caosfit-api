@@ -1,4 +1,4 @@
-import { ApiProperty, PartialType } from '@nestjs/swagger';
+import { ApiProperty, IntersectionType, PartialType } from '@nestjs/swagger';
 import {
   IsEmail,
   IsNotEmpty,
@@ -7,33 +7,39 @@ import {
   IsString,
   IsUUID,
 } from 'class-validator';
+import { CreatePersonDto } from './person.dto';
 
 export class CreateUserDto {
   @IsUUID()
   @IsString()
   @IsOptional()
   @ApiProperty()
-  id: string;
+  readonly id: string;
 
   @IsNotEmpty()
   @IsString()
   @ApiProperty()
-  username: string;
+  readonly username: string;
 
   @IsNotEmpty()
   @IsString()
   @ApiProperty()
-  password: string;
+  readonly password: string;
 
   @IsNotEmpty()
   @IsEmail()
   @ApiProperty()
-  email: string;
+  readonly email: string;
 
   @IsNotEmpty()
   @IsPositive()
   @ApiProperty()
-  roleId: number;
+  readonly roleId: number;
 }
 
 export class UpdateUserDto extends PartialType(CreateUserDto) {}
+
+export class PersonalInformationDto extends IntersectionType(
+  CreateUserDto,
+  CreatePersonDto,
+) {}
