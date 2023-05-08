@@ -8,7 +8,7 @@ import { Repository } from 'typeorm';
 
 import { Role } from '../entities/role.entity';
 import { GenericService } from 'src/common/class/generic.service';
-import { CreateRoleDTO, UpdateRoleDto } from '../Dtos/role.dto';
+import { CreateRoleDTO, UpdateRoleDto } from '../dtos/role.dto';
 
 @Injectable()
 export class RolesService

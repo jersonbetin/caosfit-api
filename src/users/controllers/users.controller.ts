@@ -13,7 +13,7 @@ import { ApiTags } from '@nestjs/swagger';
 import { UsersService } from '../services/users.service';
 import { ResponseMessage } from 'src/common/commons.decorator';
 import { stg } from 'src/common/strings';
-import { CreateUserDto, UpdateUserDto } from '../Dtos/user.dto';
+import { PersonalInformationDto, UpdateUserDto } from '../dtos/user.dto';
 const NAME = 'users';
 @ApiTags(NAME)
 @Controller(NAME)
@@ -32,11 +32,18 @@ export class UsersController {
     return this.userService.findOne(id);
   }
 
-  @Post()
+  // @Post()
+  // @HttpCode(HttpStatus.CREATED)
+  // @ResponseMessage(stg('create_resource', { replace: { '%c': NAME } }))
+  // createRole(@Body() data: Person) {
+  //   return this.userService.create(data);
+  // }
+
+  @Post('personal-information')
   @HttpCode(HttpStatus.CREATED)
   @ResponseMessage(stg('create_resource', { replace: { '%c': NAME } }))
-  createRole(@Body() role: CreateUserDto) {
-    return this.userService.create(role);
+  createUser(@Body() data: PersonalInformationDto) {
+    return this.userService.createUserPersonalInformation(data);
   }
 
   @Put(':id')

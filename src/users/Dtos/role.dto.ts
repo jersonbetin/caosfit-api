@@ -5,7 +5,7 @@ export class CreateRoleDTO {
   @IsString()
   @IsNotEmpty()
   @ApiProperty({ description: 'role name' })
-  name: string;
+  readonly name: string;
 }
 
 export class UpdateRoleDto extends PartialType(CreateRoleDTO) {}

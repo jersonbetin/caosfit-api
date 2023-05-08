@@ -12,7 +12,7 @@ import {
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { RolesService } from '../services/roles.service';
-import { CreateRoleDTO, UpdateRoleDto } from '../Dtos/role.dto';
+import { CreateRoleDTO, UpdateRoleDto } from '../dtos/role.dto';
 import { ResponseMessage } from 'src/common/commons.decorator';
 import { stg } from 'src/common/strings';
 
