@@ -4,6 +4,7 @@ const strings = {
   create_resource: 'The %c was create successful!',
   update_resource: 'The %c was update successful!',
   delete_resource: 'The %c was delete successful!',
+  login_success: 'The user was login successful!',
 };
 
 interface ReplaceInterface {

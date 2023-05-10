@@ -1,11 +1,13 @@
 import { ApiProperty, PartialType } from '@nestjs/swagger';
-import { IsNotEmpty, IsString } from 'class-validator';
+import { IsEnum, IsNotEmpty, IsString } from 'class-validator';
+import { ROLES } from '../entities/role.entity';
 
 export class CreateRoleDTO {
   @IsString()
   @IsNotEmpty()
   @ApiProperty({ description: 'role name' })
-  readonly name: string;
+  @IsEnum(ROLES)
+  readonly name: ROLES;
 }
 
 export class UpdateRoleDto extends PartialType(CreateRoleDTO) {}

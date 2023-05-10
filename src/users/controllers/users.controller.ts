@@ -32,13 +32,6 @@ export class UsersController {
     return this.userService.findOne(id);
   }
 
-  // @Post()
-  // @HttpCode(HttpStatus.CREATED)
-  // @ResponseMessage(stg('create_resource', { replace: { '%c': NAME } }))
-  // createRole(@Body() data: Person) {
-  //   return this.userService.create(data);
-  // }
-
   @Post('personal-information')
   @HttpCode(HttpStatus.CREATED)
   @ResponseMessage(stg('create_resource', { replace: { '%c': NAME } }))
