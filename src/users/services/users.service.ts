@@ -112,4 +112,8 @@ export class UsersService
 
     return this.personRepo.save(person);
   }
+
+  async findByUsername(username: string) {
+    return this.userRepo.findOne({ where: { username }, relations: ['role'] });
+  }
 }
