@@ -24,6 +24,8 @@ async function bootstrap() {
 
   useContainer(app.select(AppModule), { fallbackOnErrors: true });
 
+  app.enableCors();
+
   const config = new DocumentBuilder()
     .setTitle('Caosfit api documentation')
     .setDescription('')

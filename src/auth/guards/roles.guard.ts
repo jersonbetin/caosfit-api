@@ -7,6 +7,7 @@ import { ROLE_KEY } from '../decorators/roles.decorator';
 @Injectable()
 export class RolesGuard implements CanActivate {
   constructor(private readonly reflector: Reflector) {}
+
   canActivate(
     context: ExecutionContext,
   ): boolean | Promise<boolean> | Observable<boolean> {
@@ -15,15 +16,12 @@ export class RolesGuard implements CanActivate {
       context.getClass(),
     ]);
 
-    console.log('--->', roles);
-
     if (!roles) {
       return true;
     }
 
     const request = context.switchToHttp().getRequest();
 
-    console.log('--->', request.headers['user']);
-    return !request;
+    return roles.includes(request?.user.role);
   }
 }

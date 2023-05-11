@@ -9,8 +9,8 @@ import { stg } from 'src/common/strings';
 export class AuthController {
   constructor(private authService: AuthService) {}
 
-  @UseGuards(AuthGuard('local'))
   @Post('login')
+  @UseGuards(AuthGuard('local'))
   @ResponseMessage(stg('login_success'))
   async login(@Request() req) {
     return this.authService.generateToke(req.user as User);

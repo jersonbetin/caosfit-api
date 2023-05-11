@@ -12,6 +12,7 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
+
 import { RolesService } from '../services/roles.service';
 import { CreateRoleDTO, UpdateRoleDto } from '../dtos/role.dto';
 import { ResponseMessage } from 'src/common/commons.decorator';
@@ -19,11 +20,12 @@ import { stg } from 'src/common/strings';
 import { Roles } from 'src/auth/decorators/roles.decorator';
 import { ROLES } from '../entities/role.entity';
 import { RolesGuard } from 'src/auth/guards/roles.guard';
+import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
 
 @ApiTags('roles')
 @Controller('roles')
 @Roles(ROLES.ADMIN)
-@UseGuards(RolesGuard)
+@UseGuards(JwtAuthGuard, RolesGuard)
 export class RolesController {
   constructor(private roleService: RolesService) {}
 
